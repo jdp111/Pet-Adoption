@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pet Shop</title>
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+<h1>Pets</h1>
+
+    <div>
+        {% for pet in pets %}
+            <a href="/{{pet.id}}">
+            <div class = 'petListing'>
+                <img src={{pet.photo_url}}> <br>
+                <span class = 'petName'>{{pet.name}}</span>
+                {% if pet.available %}
+                    <span class = 'available'> is available</span>
+                {% endif %}
+            </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <form action="/add">
+        <input class = 'addbutton' type="submit" value = "Add a Pet">
+    </form>
+
+</body>
+</html>

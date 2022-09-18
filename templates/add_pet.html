@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>new pet</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+<h1>Add Pet:</h1>
+
+    
+    <form method = 'POST'>
+        {{ form.hidden_tag() }}
+
+        {% for field in form if field.widget.input_type != 'hidden' %}
+            <p class="forms">
+                {{field.label}}
+                {{field}}
+            </p>
+            <small> {{field.errors[0]}}</small>
+        {% endfor %}
+
+        <input class = 'addbutton' type="submit" value = "Add">
+    </form>
+
+</body>
+</html>

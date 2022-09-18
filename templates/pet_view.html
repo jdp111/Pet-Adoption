@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{pet.name}}</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+<h1>{{pet.name}}</h1>
+<p>Species: {{pet.species}}</p>
+
+{% if pet.age %}
+<p>Age: {{pet.age}}</p>
+{% endif %}
+
+{% if pet.notes %}
+<p>Notes: {{pet.notes}}</p>
+{% endif %}
+
+{% if pet.photo_url %}
+<img src={{pet.photo_url}}>
+{% endif %}
+
+<hr>
+
+<h2>Edit Pet:</h2>
+
+<form method = 'POST'>
+    {{ form.hidden_tag() }}
+    
+    {% for field in form if field.widget.input_type != 'hidden' %}
+        <p class="forms">
+            {{field.label}}
+            {{field}}
+        </p>
+        <small> {{field.errors[0]}}</small>
+    {% endfor %}
+
+    <input class = 'addbutton' type="submit" value = "Edit">
+</form>
+
+</body>
+</html>
